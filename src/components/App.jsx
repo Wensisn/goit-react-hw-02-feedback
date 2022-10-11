@@ -1,5 +1,4 @@
 import Fedback from './fedback/fedback';
-
 export const App = () => {
   return (
     <div

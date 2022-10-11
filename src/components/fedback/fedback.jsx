@@ -1,5 +1,6 @@
 import { Component } from 'react';
-import css from './fedback.module.css';
+import { Statistics } from 'components/Statistics/Statistics';
+import { FedbackOptions } from 'components/FeedbackOptions/FeedbackOptions';
 
 export default class FedBack extends Component {
   state = {
@@ -30,44 +31,31 @@ export default class FedBack extends Component {
     });
   };
 
-  countTotalFeedback() {
+  countTotalFeedback = () => {
     const { good, neutral, bad } = this.state;
     return good + neutral + bad;
-  }
+  };
 
-  countPositiveFeedbackPercentage() {
+  countPositiveFeedbackPercentage = () => {
     if (!this.state.good) {
       return 0;
     }
     return ((this.state.good * 100) / this.countTotalFeedback()).toFixed(2);
-  }
+  };
 
   render() {
-    const { good, neutral, bad } = this.state;
+    // const { good, neutral, bad } = this.state;
     return (
       <div>
-        <h2 className={css.title}>Please leave FadBack</h2>
-        <div className={css.sectionsFedback}>
-          <button className={css.button} onClick={this.stepIncrementGood}>
-            Good
-          </button>
-          <button className={css.button} onClick={this.stepIncrementNeutral}>
-            Neutral
-          </button>
-          <button className={css.button} onClick={this.stepIncrementBad}>
-            Bad
-          </button>
-        </div>
-        <h2 className={css.title}>Statistics</h2>
-        <div className={css.sectionsResults}>
-          <p className={css.result}>Good:{good}</p>
-          <p className={css.result}>Neutral:{neutral}</p>
-          <p className={css.result}>Bad:{bad}</p>
-          <p className={css.result}>Total:{this.countTotalFeedback()}</p>
-          <p className={css.result}>
-            Positiv Fedback:{this.countPositiveFeedbackPercentage()}%
-          </p>
-        </div>
+        <FedbackOptions
+          stepGood={this.stepIncrementGood}
+          stepNeutral={this.stepIncrementNeutral}
+          stepBad={this.stepIncrementBad}
+        />
+        <Statistics
+          onFedbackTotal={this.countTotalFeedback}
+          onFedbackPercentage={this.countPositiveFeedbackPercentage}
+        />
       </div>
     );
   }
