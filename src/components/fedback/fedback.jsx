@@ -30,23 +30,18 @@ export default class FedBack extends Component {
     });
   };
 
-  countTotalFeedback = () => {
-    this.setState(propStep => {
-      return {
-        // total: // ??
-      };
-    });
-  };
+  countTotalFeedback() {
+    const { good, neutral, bad } = this.state;
+    return good + neutral + bad;
+  }
 
-  countPositiveFeedbackPercentage = () => {
-    this.setState(propStep => {
-      return {
-        // Positiv Fedback ///???,
-      };
-    });
-  };
+  countPositiveFeedbackPercentage() {
+    if (!this.state.good) {
+      return 0;
+    }
+    return ((this.state.good * 100) / this.countTotalFeedback()).toFixed(2);
+  }
 
-  countPositiveFeedbackPercentage = () => {};
   render() {
     const { good, neutral, bad } = this.state;
     return (
@@ -68,8 +63,10 @@ export default class FedBack extends Component {
           <p className={css.result}>Good:{good}</p>
           <p className={css.result}>Neutral:{neutral}</p>
           <p className={css.result}>Bad:{bad}</p>
-          <p className={css.result}>Total:{good + bad + neutral}</p>
-          <p className={css.result}>Positiv Fedback:{}</p>
+          <p className={css.result}>Total:{this.countTotalFeedback()}</p>
+          <p className={css.result}>
+            Positiv Fedback:{this.countPositiveFeedbackPercentage()}%
+          </p>
         </div>
       </div>
     );
