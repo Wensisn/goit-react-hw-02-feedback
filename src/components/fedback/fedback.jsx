@@ -1,6 +1,7 @@
 import { Component } from 'react';
-import { Statistics } from 'components/Statistics/Statistics';
-import { FedbackOptions } from 'components/FeedbackOptions/FeedbackOptions';
+import { Statistics } from '../Statistics/Statistics';
+import { FedbackOptions } from '../FeedbackOptions/FeedbackOptions';
+import { Section } from '../Section/Section';
 
 export default class FedBack extends Component {
   state = {
@@ -45,18 +46,25 @@ export default class FedBack extends Component {
   };
 
   render() {
-    // const { good, neutral, bad } = this.state;
+    const { good, neutral, bad } = this.state;
     return (
       <div>
-        <FedbackOptions
-          stepGood={this.stepIncrementGood}
-          stepNeutral={this.stepIncrementNeutral}
-          stepBad={this.stepIncrementBad}
-        />
-        <Statistics
-          onFedbackTotal={this.countTotalFeedback}
-          onFedbackPercentage={this.countPositiveFeedbackPercentage}
-        />
+        <Section title="Please leave FadBack">
+          <FedbackOptions
+            stepGood={this.stepIncrementGood}
+            stepNeutral={this.stepIncrementNeutral}
+            stepBad={this.stepIncrementBad}
+          />
+        </Section>
+        <Section title="Statistics">
+          <Statistics
+            good={good}
+            neutral={neutral}
+            bad={bad}
+            onFedbackTotal={this.countTotalFeedback}
+            onFedbackPercentage={this.countPositiveFeedbackPercentage}
+          />
+        </Section>
       </div>
     );
   }

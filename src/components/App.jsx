@@ -1,6 +1,5 @@
-import Fedback from './fedback/fedback';
-import { FedbackOptions } from './FeedbackOptions/FeedbackOptions';
-import { Statistics } from './Statistics/Statistics';
+import Fedback from './fedback';
+
 export const App = () => {
   return (
     <div
