@@ -5,13 +5,13 @@ export const FedbackOptions = ({ stepGood, stepNeutral, stepBad }) => {
     <>
       <h2 className={css.title}>Please leave FadBack</h2>
       <div className={css.sectionsFedback}>
-        <button className={css.button} onClick={() => stepGood}>
+        <button className={css.button} onClick={stepGood}>
           Good
         </button>
-        <button className={css.button} onClick={() => stepNeutral}>
+        <button className={css.button} onClick={stepNeutral}>
           Neutral
         </button>
-        <button className={css.button} onClick={() => stepBad}>
+        <button className={css.button} onClick={stepBad}>
           Bad
         </button>
       </div>

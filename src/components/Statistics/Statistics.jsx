@@ -10,7 +10,7 @@ export const Statistics = ({
 }) => {
   return (
     <>
-      <h2 className={css.title}>Statistics</h2>
+      <h2 className={css.title}>{'Statistics'}</h2>
       <div className={css.sectionsResults}>
         <p className={css.result}>Good:{good}</p>
         <p className={css.result}>Neutral:{neutral}</p>

@@ -8,6 +8,7 @@ export default class FedBack extends Component {
     neutral: 0,
     bad: 0,
   };
+
   stepIncrementGood = () => {
     this.setState(propStep => {
       return {
