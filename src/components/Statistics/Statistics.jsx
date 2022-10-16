@@ -1,4 +1,5 @@
 import Notification from '../Notification/Notification';
+import PropTypes from 'prop-types';
 import css from './Statistics.module.css';
 
 export const Statistics = ({
@@ -31,4 +32,13 @@ export const Statistics = ({
       )}
     </>
   );
+};
+
+Statistics.propTypes = {
+  title: PropTypes.string.isRequired,
+  good: PropTypes.number.isRequired,
+  Neutral: PropTypes.number.isRequired,
+  bad: PropTypes.number.isRequired,
+  onFedbackTotal: PropTypes.func.isRequired,
+  onFedbackPercentage: PropTypes.func.isRequired,
 };

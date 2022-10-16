@@ -1,4 +1,5 @@
 import css from './Option.module.css';
+import PropTypes from 'prop-types';
 
 export const FedbackOptions = ({ stepGood, stepNeutral, stepBad, title }) => {
   return (
@@ -17,4 +18,11 @@ export const FedbackOptions = ({ stepGood, stepNeutral, stepBad, title }) => {
       </div>
     </>
   );
+};
+
+FedbackOptions.propTypes = {
+  stepGood: PropTypes.func.isRequired,
+  stepNeutral: PropTypes.func.isRequired,
+  stepBad: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
 };
