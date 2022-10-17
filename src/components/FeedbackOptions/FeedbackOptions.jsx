@@ -1,28 +1,27 @@
 import css from './Option.module.css';
 import PropTypes from 'prop-types';
 
-export const FedbackOptions = ({ stepGood, stepNeutral, stepBad, title }) => {
+export const FedbackOptions = ({ options, stepFunc }) => {
   return (
     <>
-      <h2 className={css.title}>{title}</h2>
       <div className={css.sectionsFedback}>
-        <button className={css.button} onClick={stepGood}>
-          Good
-        </button>
-        <button className={css.button} onClick={stepNeutral}>
-          Neutral
-        </button>
-        <button className={css.button} onClick={stepBad}>
-          Bad
-        </button>
+        {options.map(item => (
+          <li key={item} className={css.button}>
+            <button
+              type="click"
+              className={css.button}
+              onClick={() => stepFunc(item)}
+            >
+              {item[0].toUpperCase() + item.slice(1)}
+            </button>
+          </li>
+        ))}
       </div>
     </>
   );
 };
 
 FedbackOptions.propTypes = {
-  stepGood: PropTypes.func.isRequired,
-  stepNeutral: PropTypes.func.isRequired,
-  stepBad: PropTypes.func.isRequired,
-  title: PropTypes.string,
+  stepFunc: PropTypes.func.isRequired,
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
 };

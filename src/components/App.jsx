@@ -3,7 +3,6 @@ import React from 'react';
 import { Statistics } from './Statistics/Statistics';
 import { FedbackOptions } from './FeedbackOptions/FeedbackOptions';
 import { Section } from './Section/Section';
-import css from './App.module.css';
 
 export class App extends Component {
   state = {
@@ -12,27 +11,8 @@ export class App extends Component {
     bad: 0,
   };
 
-  stepIncrementGood = () => {
-    this.setState(propStep => {
-      return {
-        good: propStep.good + 1,
-      };
-    });
-  };
-  stepIncrementNeutral = () => {
-    this.setState(propStep => {
-      return {
-        neutral: propStep.neutral + 1,
-      };
-    });
-  };
-
-  stepIncrementBad = () => {
-    this.setState(propStep => {
-      return {
-        bad: propStep.bad + 1,
-      };
-    });
+  saveFeedback = grade => {
+    this.setState(prevState => ({ [grade]: prevState[grade] + 1 }));
   };
 
   countTotalFeedback = () => {
@@ -49,14 +29,11 @@ export class App extends Component {
 
   render() {
     const { good, neutral, bad } = this.state;
+    const options = Object.keys(this.state);
     return (
       <div>
         <Section title="Please leave feedback">
-          <FedbackOptions
-            stepGood={this.stepIncrementGood}
-            stepNeutral={this.stepIncrementNeutral}
-            stepBad={this.stepIncrementBad}
-          />
+          <FedbackOptions stepFunc={this.saveFeedback} options={options} />
         </Section>
         <Section title="Statistics">
           <Statistics
