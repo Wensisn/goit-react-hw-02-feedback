@@ -24,5 +24,5 @@ FedbackOptions.propTypes = {
   stepGood: PropTypes.func.isRequired,
   stepNeutral: PropTypes.func.isRequired,
   stepBad: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
 };

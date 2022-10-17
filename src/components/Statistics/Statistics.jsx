@@ -35,9 +35,9 @@ export const Statistics = ({
 };
 
 Statistics.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   good: PropTypes.number.isRequired,
-  Neutral: PropTypes.number.isRequired,
+  Neutral: PropTypes.number,
   bad: PropTypes.number.isRequired,
   onFedbackTotal: PropTypes.func.isRequired,
   onFedbackPercentage: PropTypes.func.isRequired,
